@@ -19,7 +19,10 @@ export default function ServicesPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight">Services</h1>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-accent-2">
+          Book
+        </p>
+        <h1 className="mt-2 text-4xl font-bold tracking-tight">Services</h1>
         <p className="mt-2 text-sm text-muted">
           Bookings are simulated. No calendars, inboxes, or payments connect.
         </p>
@@ -30,9 +33,9 @@ export default function ServicesPage() {
             key={key}
             type="button"
             onClick={() => setFilter(key)}
-            className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${
+            className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
               filter === key
-                ? "border-accent bg-accent/20"
+                ? "border-transparent bg-gradient-to-r from-accent/40 via-accent-2/40 to-accent-3/30"
                 : "border-white/10 text-muted hover:text-foreground"
             }`}
           >
@@ -40,7 +43,7 @@ export default function ServicesPage() {
           </button>
         ))}
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {items.map((service) => (
           <ServiceCard key={service.id} service={service} />
         ))}

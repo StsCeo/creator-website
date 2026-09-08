@@ -33,7 +33,7 @@ export default function OpenGraphImage() {
             letterSpacing: -1,
           }}
         >
-          CW
+          CD
         </div>
         <div
           style={{
@@ -44,10 +44,10 @@ export default function OpenGraphImage() {
             letterSpacing: -1.5,
           }}
         >
-          Creator Website
+          Creator District
         </div>
         <div style={{ marginTop: 16, fontSize: 28, color: "#a1a1aa" }}>
-          Discover creators. Shop products. Book services.
+          Everything creators make, all in one place.
         </div>
         <div style={{ marginTop: 28, fontSize: 18, color: "#71717a" }}>
           Front-end prototype · mock data only · USD · United States

@@ -18,7 +18,10 @@ export type IconName =
   | "menu"
   | "close"
   | "chevron"
-  | "panel";
+  | "panel"
+  | "flame"
+  | "store"
+  | "star";
 
 const paths: Record<IconName, string> = {
   home: "M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z",
@@ -44,6 +47,9 @@ const paths: Record<IconName, string> = {
   close: "M6 6l12 12M18 6 6 18",
   chevron: "M9 6l6 6-6 6",
   panel: "M4 6h16v12H4V6zm6 0v12",
+  flame: "M12 3c1.8 3.2 5 4.8 5 8.4A5 5 0 1 1 7.6 7.8C8.5 9.4 10 10 11 10c0-2.4.4-4.6 1-7z",
+  store: "M4 7h16l-1.2 4.2H5.2L4 7zm2 4.2V20h4v-6h4v6h4v-8.8",
+  star: "M12 3.4 14.5 9h6.1l-4.9 3.7 1.9 6-5.6-3.8-5.6 3.8 1.9-6L3.4 9h6.1L12 3.4z",
 };
 
 export function Icon({

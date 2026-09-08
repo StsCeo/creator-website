@@ -7,7 +7,8 @@ import { useDemo } from "@/components/providers/DemoProvider";
 import { Button } from "@/components/ui/Button";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { EmptyState } from "@/components/ui/EmptyState";
-import { Poster } from "@/components/media/Poster";
+import { CoverImage } from "@/components/media/CoverImage";
+import { productCover } from "@/lib/media";
 
 export default function CartPage() {
   const { cart, setCartQty, removeFromCart, cartTotalCents, clearCart } =
@@ -43,8 +44,13 @@ export default function CartPage() {
                   key={item.productId}
                   className="flex gap-4 rounded-2xl border border-white/10 p-3"
                 >
-                  <div className="w-28 shrink-0">
-                    <Poster seed={product.id} compact ratio="wide" />
+                  <div className="w-28 shrink-0 overflow-hidden rounded-xl">
+                    <CoverImage
+                      src={productCover(product.id)}
+                      alt=""
+                      ratio="wide"
+                      className="rounded-xl"
+                    />
                   </div>
                   <div className="min-w-0 flex-1">
                     <Link

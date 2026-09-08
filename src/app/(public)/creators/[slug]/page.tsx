@@ -10,11 +10,15 @@ import {
 } from "@/lib/mock";
 import { formatCompact } from "@/lib/format";
 import { NICHE_LABELS } from "@/lib/constants";
+import { productCover } from "@/lib/media";
+import { CoverImage } from "@/components/media/CoverImage";
+import { CreatorAvatar } from "@/components/media/CreatorAvatar";
 import { Poster } from "@/components/media/Poster";
 import { Badge } from "@/components/ui/Badge";
 import { ProductCard } from "@/components/commerce/ProductCard";
 import { ServiceCard } from "@/components/commerce/ServiceCard";
 import { SaveButton } from "@/components/commerce/SaveButton";
+import { FollowButton } from "@/components/commerce/FollowButton";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -44,13 +48,20 @@ export default async function CreatorStorefrontPage({ params }: Props) {
   return (
     <div className="space-y-10">
       <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)]">
-        <Poster
-          seed={`${creator.id}-cover`}
-          play
+        <CoverImage
+          src={
+            products[0]
+              ? productCover(products[0].id)
+              : "/hero/hero-creator-district.png"
+          }
+          alt=""
           ratio="video"
-          title={creator.featuredTitle}
+          className="rounded-[1.8rem] border border-white/10"
         />
-        <div className="flex flex-col justify-center rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+        <div className="flex flex-col justify-center rounded-[1.8rem] border border-white/10 bg-white/[0.04] p-6">
+          <div className="mb-4">
+            <CreatorAvatar creator={creator} size="lg" />
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             {creator.isVerified && <Badge tone="accent">Verified</Badge>}
             {creator.niches.map((n) => (
@@ -63,10 +74,11 @@ export default async function CreatorStorefrontPage({ params }: Props) {
           <p className="text-muted">{creator.handle}</p>
           <p className="mt-4 text-sm leading-relaxed text-muted">{creator.bio}</p>
           <p className="mt-4 text-sm text-muted">
-            {creator.location} · {formatCompact(creator.followers)} following ·{" "}
+            {creator.location} · {formatCompact(creator.followers)} followers ·{" "}
             {creator.rating} ({creator.reviewCount} reviews)
           </p>
-          <div className="mt-5">
+          <div className="mt-5 flex flex-wrap gap-3">
+            <FollowButton creatorId={creator.id} />
             <SaveButton kind="creator" id={creator.id} />
           </div>
         </div>

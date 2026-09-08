@@ -4,7 +4,9 @@ import Link from "next/link";
 import { getCreator, getService, services } from "@/lib/mock";
 import { NICHE_LABELS } from "@/lib/constants";
 import { formatUsd } from "@/lib/format";
-import { Poster } from "@/components/media/Poster";
+import { serviceCover } from "@/lib/media";
+import { CoverImage } from "@/components/media/CoverImage";
+import { CreatorAvatar } from "@/components/media/CreatorAvatar";
 import { Badge } from "@/components/ui/Badge";
 import { DemoNotice } from "@/components/ui/DemoNotice";
 import { BookServiceButton } from "@/components/commerce/BookServiceButton";
@@ -31,14 +33,20 @@ export default async function ServiceDetailPage({ params }: Props) {
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
       <div className="space-y-5">
-        <Poster seed={service.id} ratio="video" play title={service.title} />
+        <CoverImage
+          src={serviceCover(service.id)}
+          alt={service.title}
+          ratio="wide"
+          className="rounded-[1.6rem] border border-white/10"
+        />
         <h1 className="text-3xl font-bold tracking-tight">{service.title}</h1>
         {creator && (
           <Link
             href={`/creators/${creator.slug}`}
-            className="text-sm text-muted hover:text-foreground"
+            className="flex items-center gap-2 text-sm text-muted hover:text-foreground"
           >
-            by {creator.displayName}
+            <CreatorAvatar creator={creator} size="sm" />
+            {creator.displayName}
           </Link>
         )}
         <p className="text-sm leading-relaxed text-muted">{service.description}</p>

@@ -391,6 +391,54 @@ export const products: DigitalProduct[] = [
     salesCount: 260,
     status: "draft",
   },
+  {
+    id: "p_free_lighting",
+    slug: "night-lighting-cheatsheet",
+    creatorId: "c_elena",
+    title: "Night Lighting Cheatsheet",
+    description:
+      "A one-page printable for wet-street, practical, and gel setups. Free for the Creator District community.",
+    category: "film-video",
+    priceCents: 0,
+    format: "printable",
+    tags: ["free", "lighting", "on-set"],
+    rating: 4.8,
+    reviewCount: 140,
+    salesCount: 4200,
+    status: "published",
+  },
+  {
+    id: "p_free_color",
+    slug: "brand-color-worksheet",
+    creatorId: "c_julian",
+    title: "Brand Color Worksheet",
+    description:
+      "A guided worksheet for picking a three-color system without drowning in swatches.",
+    category: "graphic-design",
+    priceCents: 0,
+    format: "printable",
+    tags: ["free", "branding", "color"],
+    rating: 4.7,
+    reviewCount: 96,
+    salesCount: 3100,
+    status: "published",
+  },
+  {
+    id: "p_free_mobility",
+    slug: "seven-minute-mobility",
+    creatorId: "c_kenji",
+    title: "7-Minute Desk Mobility",
+    description:
+      "A short reset for hips, thoracic spine, and wrists. No equipment, no gym.",
+    category: "fitness",
+    priceCents: 0,
+    format: "printable",
+    tags: ["free", "mobility"],
+    rating: 4.6,
+    reviewCount: 210,
+    salesCount: 5400,
+    status: "published",
+  },
 ];
 
 export const services: Service[] = [
@@ -1126,8 +1174,24 @@ export function contentByCreator(creatorId: string): ContentItem[] {
   return contentItems.filter((c) => c.creatorId === creatorId);
 }
 
+export const seedFollowingIds = ["c_elena", "c_sofia", "c_riley"];
+
 export function publishedProducts(): DigitalProduct[] {
   return products.filter((p) => p.status === "published");
+}
+
+export function freeProducts(): DigitalProduct[] {
+  return publishedProducts().filter((p) => p.priceCents === 0);
+}
+
+export function trendingProducts(): DigitalProduct[] {
+  return [...publishedProducts()].sort((a, b) => b.salesCount - a.salesCount);
+}
+
+export function popularProducts(): DigitalProduct[] {
+  return [...publishedProducts()]
+    .filter((p) => p.priceCents > 0)
+    .sort((a, b) => b.salesCount - a.salesCount);
 }
 
 export function publishedServices(): Service[] {

@@ -1,9 +1,9 @@
 import type { DemoRole, Niche } from "./types";
 
 export const BRAND = {
-  name: "Creator Website",
-  short: "CW",
-  tagline: "Discover creators. Shop products. Book services.",
+  name: "Creator District",
+  short: "CD",
+  tagline: "Everything creators make, all in one place.",
 } as const;
 
 export const DEFAULT_CREATOR_SLUG = "elena-voss";
@@ -37,12 +37,31 @@ export const ROLE_LABELS: Record<DemoRole, string> = {
   admin: "Platform Admin",
 };
 
-export const PUBLIC_NAV = [
+export const MARKETPLACE_NAV = [
   { href: "/", label: "Discover", icon: "home" },
-  { href: "/products", label: "Products", icon: "bag" },
+  { href: "/products", label: "Digital Products", icon: "bag" },
   { href: "/services", label: "Services", icon: "spark" },
   { href: "/creators", label: "Creators", icon: "users" },
+  { href: "/trending", label: "Trending", icon: "flame" },
+  { href: "/following", label: "Following", icon: "users" },
+  { href: "/saved", label: "Saved", icon: "heart" },
+  { href: "/library", label: "My Library", icon: "grid" },
+  { href: "/orders", label: "Orders & Bookings", icon: "list" },
+  { href: "/sell", label: "Sell on Creator District", icon: "store" },
 ] as const;
+
+export const MARKETPLACE_GROUPS = [
+  {
+    label: "Explore",
+    items: MARKETPLACE_NAV.slice(0, 5),
+  },
+  {
+    label: "Your space",
+    items: MARKETPLACE_NAV.slice(5, 9),
+  },
+] as const;
+
+export const PUBLIC_NAV = MARKETPLACE_NAV;
 
 export const CREATOR_NAV = [
   { href: "/dashboard", label: "Overview", icon: "home" },
@@ -73,3 +92,11 @@ export const ADMIN_NAV = [
   { href: "/admin/reports", label: "Reports", icon: "chart" },
   { href: "/admin/settings", label: "Settings", icon: "gear" },
 ] as const;
+
+export function isStudioPath(pathname: string): boolean {
+  return (
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/buyer") ||
+    pathname.startsWith("/admin")
+  );
+}

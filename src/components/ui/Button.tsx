@@ -22,7 +22,7 @@ export function Button({
         size === "md" && "px-4 py-2 text-sm",
         size === "lg" && "px-6 py-3 text-base",
         variant === "primary" &&
-          "bg-gradient-to-r from-accent to-accent-2 text-white shadow-lg shadow-accent/20 hover:opacity-90",
+          "bg-gradient-to-r from-accent via-accent-2 to-accent-3 text-white shadow-lg shadow-accent-2/20 hover:opacity-90",
         variant === "secondary" &&
           "border border-white/15 bg-white/5 hover:border-white/30",
         variant === "ghost" && "hover:bg-white/5",

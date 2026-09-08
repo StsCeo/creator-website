@@ -1,8 +1,8 @@
-# Creator Website
+# Creator District
 
 Front-end prototype of a creator marketplace and creator business operating system.
 
-Temporary product name: **Creator Website**. Dark neutral UI with electric blue and violet accents. Public discovery is media-forward; creator and platform dashboards are information-dense.
+Temporary product name: **Creator District**. Dark, immersive public marketplace with electric blue, violet, and pink accents. Creator and platform dashboards stay information-dense.
 
 This repository is a **mock-data UI only**. It is not a production marketplace.
 
@@ -47,7 +47,7 @@ Dev server: [http://localhost:3000](http://localhost:3000)
 - `/products`, `/products/[slug]`
 - `/services`, `/services/[slug]`
 - `/creators`, `/creators/[slug]`
-- `/cart`, `/checkout`
+- `/trending`, `/following`, `/saved`, `/library`, `/orders`, `/sell`
 - `/terms`, `/privacy`
 
 **Creator studio (demo)** — default fictional creator: Elena Voss

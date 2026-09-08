@@ -49,7 +49,9 @@ export function AppShell({ children }: { children: ReactNode }) {
       >
         <DemoBanner />
         <TopNav />
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+        <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 py-7 sm:px-6 lg:px-10 lg:py-9">
+          {children}
+        </main>
         <footer className="mt-auto border-t border-white/10 px-4 py-6 text-xs text-muted sm:px-8">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span>

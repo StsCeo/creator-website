@@ -23,6 +23,7 @@ import {
   getService,
   seedBuyerBookings,
   seedBuyerOrders,
+  seedFollowingIds,
 } from "@/lib/mock";
 
 type SavedState = {
@@ -52,6 +53,8 @@ type DemoContextValue = {
   toggleSavedProduct: (id: string) => void;
   toggleSavedService: (id: string) => void;
   toggleSavedCreator: (id: string) => void;
+  followingIds: string[];
+  toggleFollow: (id: string) => void;
   libraryIds: string[];
   buyerOrders: LocalBuyerOrder[];
   simulateCheckout: () => boolean;
@@ -82,6 +85,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [saved, setSaved] = useState<SavedState>(initialSaved);
+  const [followingIds, setFollowingIds] = useState<string[]>(seedFollowingIds);
   const [extraLibrary, setExtraLibrary] = useState<string[]>([]);
   const [extraOrders, setExtraOrders] = useState<LocalBuyerOrder[]>([]);
   const [extraBookings, setExtraBookings] = useState<BuyerBooking[]>([]);
@@ -129,6 +133,12 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
   const clearCart = useCallback(() => {
     setCart([]);
+  }, []);
+
+  const toggleFollow = useCallback((id: string) => {
+    setFollowingIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
+    );
   }, []);
 
   const toggleList = useCallback((key: keyof SavedState, id: string) => {
@@ -246,6 +256,8 @@ export function DemoProvider({ children }: { children: ReactNode }) {
       toggleSavedProduct: (id) => toggleList("products", id),
       toggleSavedService: (id) => toggleList("services", id),
       toggleSavedCreator: (id) => toggleList("creators", id),
+      followingIds,
+      toggleFollow,
       libraryIds,
       buyerOrders,
       simulateCheckout,
@@ -261,6 +273,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
       cart,
       cartTotalCents,
       clearCart,
+      followingIds,
       libraryIds,
       mobileNavOpen,
       notify,
@@ -273,6 +286,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
       simulateBooking,
       simulateCheckout,
       toast,
+      toggleFollow,
       toggleList,
       toggleSidebar,
     ],

@@ -46,7 +46,7 @@ export function TopNav() {
         : creator.displayName;
 
   return (
-    <header className="sticky top-0 z-30 flex h-[var(--topbar)] items-center gap-3 border-b border-white/10 bg-[#07070b]/85 px-3 backdrop-blur-md sm:px-5">
+    <header className="sticky top-0 z-30 flex h-[var(--topbar)] items-center gap-3 border-b border-white/10 bg-[#09060f]/70 px-3 backdrop-blur-xl sm:px-5">
       <button
         type="button"
         className="rounded-lg p-2 text-muted hover:bg-white/10 hover:text-foreground lg:hidden"
@@ -62,7 +62,7 @@ export function TopNav() {
         className="flex min-w-0 flex-1 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-left text-sm text-muted transition hover:border-white/20 sm:max-w-md"
       >
         <Icon name="search" className="h-4 w-4 shrink-0" />
-        <span className="truncate">Search creators, products, services</span>
+        <span className="truncate">Search Creator District</span>
         <kbd className="ml-auto hidden rounded-md border border-white/10 px-1.5 py-0.5 text-[10px] text-muted sm:inline">
           /
         </kbd>
@@ -104,7 +104,7 @@ export function TopNav() {
 
       <details className="relative">
         <summary className="flex cursor-pointer list-none items-center gap-2 rounded-full border border-white/10 bg-white/5 py-1 pl-1 pr-2 [&::-webkit-details-marker]:hidden">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 text-[11px] font-bold">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent via-accent-2 to-accent-3 text-[11px] font-bold">
             {profileLabel
               .split(" ")
               .map((p) => p[0])
