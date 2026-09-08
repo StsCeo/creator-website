@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Providers } from "@/components/providers/Providers";
+import { BRAND } from "@/lib/constants";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ava Rivers — Creator, Filmmaker & Storyteller",
+  title: {
+    default: BRAND.name,
+    template: `%s · ${BRAND.name}`,
+  },
   description:
-    "The official website of Ava Rivers: films, photography, workshops, and ways to collaborate.",
+    "A creator marketplace and business operating system prototype. Mock data only. USD. United States. Ages 18+.",
+  applicationName: BRAND.name,
 };
 
 export default function RootLayout({
@@ -26,7 +32,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full bg-background text-foreground">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
